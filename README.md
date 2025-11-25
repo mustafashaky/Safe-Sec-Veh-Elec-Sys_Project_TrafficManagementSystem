@@ -90,6 +90,9 @@ Press 1 and 2 to see how it behaves.
 To tweak behavior:
 
 LIAR_PROBABILITY (traffic_sim_2_smart.py): make lying rarer or more common.
+
 SPAWN_INTERVAL: smaller = heavier traffic, larger = lighter traffic.
+
 LIE_PENALTY_SEC: increase or decrease how long liars wait before they’re eligible to go.
+
 PHASE_DURATION (only used in the sandbox’s internal greedy choice; the RL player ignores it and uses its own durations).
