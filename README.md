@@ -71,18 +71,18 @@ Keep the window focused. Press 1 to spawn the safe demo, 2 to spawn the liar dem
 Instruction to use the modules: 
 
 Step 1: 
-Explore the sandbox (optional but helpful)
-python traffic_sim_2_smart.py
-Get familiar with the visuals and hotkeys (1 and 2)
+Explore the sandbox (optional but helpful).
+python traffic_sim_2_smart.py.
+Get familiar with the visuals and hotkeys (1 and 2).
 Step 2: 
-Train a model
-python train_dqn_traffic_sim_2_smart.py
-When done, confirm dqn_phase.pt exists at the path shown
+Train a model.
+python train_dqn_traffic_sim_2_smart.py.
+When done, confirm dqn_phase.pt exists at the path shown.
 Step 3: 
-Play with the learned controller
+Play with the learned controller.
 Make sure play_dqn_traffic_sim_2_smart.py has the correct MODEL_PATH.
-python play_dqn_traffic_sim_2_smart.py
-Press 1 and 2 to see how it behaves
+python play_dqn_traffic_sim_2_smart.py.
+Press 1 and 2 to see how it behaves.
 
 To tweak behavior:
 
