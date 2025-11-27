@@ -1,4 +1,6 @@
 # pygame-ce 2.5.6 (SDL 2.32.10, Python 3.12.7 (base))
+# tms_rule_single.py
+
 import math
 import random
 import sys
