@@ -1,0 +1,44 @@
+Module: tms_rule_single.py
+
+What the program does
+
+Simulates a 4‑way signalized intersection with cars entering from N, E, S, W and taking straight, right, or left movements.
+Models “lying” cars that report one intent to the controller but follow a different true path, so conflicts can occur even with green signals.
+Enforces single‑car releases per movement with a safety headway and uses lane‑centerline geometry for straights and 90° turn arcs for right/left turns.
+Includes an experiment mode that freezes a chosen signal phase, injects all lie types systematically, and saves results to CSV at your specified path.
+
+
+HUD controls and cues
+
+Letter on car shows TRUE intent: S/R/L; border color shows REPORTED intent: white=straight, green=right, orange=left.
+Press 1 to spawn four honest right‑turn cars; press 2 to spawn four right‑reporting cars (East lies).
+Press 0–3 to fix the phase to index 0..3; press U to unfix (return to adaptive).
+Press C to toggle continuous spawning on/off.
+Press X to run the full experiment suite and save the CSV.
+The HUD displays counts (honest, liars, crashes), the current phase (and whether it’s fixed), headway, and continuous spawn status; it shows “CRASH detected: simulation paused” if a collision occurs.
+
+
+How metrics are recorded
+
+Crash detection: If two cars overlap, both are marked crashed; the trial’s crash flag is set.
+Conflicts: For any crash, it logs the pair of true movements that collided and the pair of reported movements (for comparison).
+Honest wait times: Each honest car records when it first queues and when it’s released; wait = release_time − wait_start_time.
+Extra wait caused by the liar: Each trial runs twice—baseline (test car reports truth) and lie (test car misreports); extra wait per movement is max(0, lie_wait − baseline_wait), summed across honest cars.
+Wasted capacity: True movement of the liar wasn’t allowed by the fixed phase, yet the liar finished without crashing.
+Output: Each trial prints a one‑line summary to the console; all trial data are exported to a CSV.
+
+
+What the metrics do:
+
+crash and conflicts_true/conflicts_reported identify movement combinations that are logically unsafe under lies.
+extra_waits and extra_honest_wait quantify how much delay honest traffic suffers because a liar took a green it shouldn’t have.
+liar_wasted flags “got through but shouldn’t have” cases—important for capacity and policy decisions even without a crash.
+
+
+What was fixed or added versus previous module (Module Name: traffic_sim_1_rule.py)
+
+Fixed‑phase experiments: You can freeze any phase (keys 0–3) and unfreeze (U), eliminating phase‑switch noise during tests.
+Systematic trial harness: Press X to automatically run all direction × lie‑type combinations for all phases, headlessly, with CSV export.
+Metrics and CSV: Detailed per‑trial metrics (crash, conflicts, waits, wasted) are computed and saved to CSV; the directory is auto‑created; the path is configurable.
+Geometry correction: Replaced constant lane shift with lane‑centerline paths and proper 90° turn arcs, fixing the West‑left arc and aligning exits to lanes.
+Continuous spawn control: Toggle on/off (C) so scenarios can run in isolation.
