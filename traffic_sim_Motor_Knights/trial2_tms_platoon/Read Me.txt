@@ -1,0 +1,49 @@
+Module: tms_rule_platoon.py
+
+What the program does:
+
+Simulates a 4‑way signalized intersection with platoons of 3–5 cars entering from N, E, S, W and taking straight, right, or left movements.
+Enforces strict signal gating: a platoon only starts crossing when its exact movement (direction, intent) is green; red movements queue at the stop line.
+Prevents overlapping releases within a direction: at most one active platoon per direction in the intersection at a time, with 1.5 s inter‑platoon headway.
+Models “lying” cars inside platoons that report one intent to the controller but, after release, follow a different true path; because lie routes diverge in the box, they sometimes clear safely and sometimes cause crashes depending on concurrent greens.
+Uses lane‑centerline geometry for straights and 90° turn arcs for right/left turns; honest cars follow the reported route, liars follow their true route post‑release.
+
+
+HUD controls and cues:
+
+Letter on car shows TRUE intent: S/R/L; border color shows REPORTED intent: white=straight, green=right, orange=left.
+Press 1 to spawn four honest right‑turn platoons (N/E/S/W).
+Press 2 to spawn four right‑reporting platoons where East contains liars.
+Press 3 to spawn liar platoons across all directions (1–3 liars per platoon).
+Press 4 to spawn one liar platoon (random direction, 2 liars).
+Press 0–3 to fix the phase to index 0..3; press U to unfix (return to adaptive).
+Press C to toggle continuous spawning on/off.
+Press X to run the experiment suite and save the CSV to your specified path.
+The HUD displays counts (honest, liars, crashes), the current phase (and whether it’s fixed), “Headway per movement” (1.5 s) and platoon size range, continuous spawn status; it shows “CRASH detected: simulation paused” if a collision occurs.
+
+
+How metrics are recorded:
+
+Per trial (experiment suite), a single platoon is simulated under a fixed phase: direction, reported movement, size, and lie composition (liar_ratio or liar_count).
+Release time: timestamp when the platoon transitions from waiting to moving (first car enters on green).
+Clear time: timestamp when the platoon leader has fully cleared the intersection.
+Crash: collisions are only registered inside the intersection and only if at least one car in the colliding pair is lying (reported_intent ≠ true_intent).
+CSV export: phase, movement, platoon size, liar composition, release/clear flags and times, and crash flag are saved; directory is auto‑created at your configured path.
+
+
+What the metrics do:
+
+released and cleared indicate whether a platoon started and finished its crossing during the trial.
+release_time and clear_time provide a simple proxy for delay and throughput under the fixed phase.
+crash indicates liar‑induced conflicts inside the box; honest‑only overlaps are ignored to reflect normal safe operation.
+liar_ratio and liar_count specify the mixture and severity of deception within a platoon, letting you study conditions under which lies “get away” versus cause crashes.
+
+
+What was fixed or added versus previous module (Module Name: trial2_tms_single.py)
+
+Platoon regime: moved from single‑car releases to 3–5 car platoons per movement, with 0.5 s intra‑platoon spacing and 1.5 s inter‑platoon spacing.
+Strict signal gating: platoons only start on green for their exact movement; red movements always queue; prevents “passing on red.”
+No overlap by direction: at most one active platoon per direction inside the intersection, eliminating overlapping “box entries.”
+Liar divergence model: honest cars follow the reported route after release; liars follow their true route, enabling “sometimes pass, sometimes crash” behavior.
+Experiment harness + CSV: fixed‑phase trials for platoons (honest vs liar mixtures) with automatic CSV saving to your specified path; directory auto‑creation included.
+Continuous spawn control and HUD: added liar platoon spawners, phase freeze/unfreeze, live counts, headway/platoon cues, and crash pause notice.

@@ -1,0 +1,37 @@
+phase_index,phase,direction,reported_intent,platoon_size,liar_ratio,liar_count,released,cleared,release_time,clear_time,crash
+0,N-S straight+right,N,right,3,0.0,0,False,True,,5.5917,False
+0,N-S straight+right,N,right,3,0.5,0,False,False,,,True
+0,N-S straight+right,N,right,3,0.0,2,False,True,,3.8583,False
+0,N-S straight+right,N,straight,3,0.0,0,False,True,,5.1167,False
+0,N-S straight+right,N,straight,3,0.5,0,False,False,,,True
+0,N-S straight+right,N,straight,3,0.0,2,False,True,,5.1167,False
+0,N-S straight+right,S,right,3,0.0,0,False,True,,5.5917,False
+0,N-S straight+right,S,right,3,0.5,0,False,False,,,True
+0,N-S straight+right,S,right,3,0.0,2,False,False,,,True
+0,N-S straight+right,S,straight,3,0.0,0,False,True,,5.1167,False
+0,N-S straight+right,S,straight,3,0.5,0,False,False,,,True
+0,N-S straight+right,S,straight,3,0.0,2,False,True,,3.8583,True
+1,E-W straight+right,E,right,3,0.0,0,False,True,,5.5917,False
+1,E-W straight+right,E,right,3,0.5,0,False,True,,3.8583,False
+1,E-W straight+right,E,right,3,0.0,2,False,False,,,True
+1,E-W straight+right,E,straight,3,0.0,0,False,True,,5.1167,False
+1,E-W straight+right,E,straight,3,0.5,0,False,False,,,True
+1,E-W straight+right,E,straight,3,0.0,2,False,True,,5.1167,False
+1,E-W straight+right,W,right,3,0.0,0,False,True,,5.5917,False
+1,E-W straight+right,W,right,3,0.5,0,False,True,,3.8583,False
+1,E-W straight+right,W,right,3,0.0,2,False,False,,,True
+1,E-W straight+right,W,straight,3,0.0,0,False,True,,5.1167,False
+1,E-W straight+right,W,straight,3,0.5,0,False,True,,3.8583,False
+1,E-W straight+right,W,straight,3,0.0,2,False,True,,3.8583,True
+2,N-S left turns,N,left,3,0.0,0,False,True,,3.7167,False
+2,N-S left turns,N,left,3,0.5,0,False,False,,,True
+2,N-S left turns,N,left,3,0.0,2,False,True,,3.7167,True
+2,N-S left turns,S,left,3,0.0,0,False,True,,3.7167,False
+2,N-S left turns,S,left,3,0.5,0,False,True,,3.7167,False
+2,N-S left turns,S,left,3,0.0,2,False,False,,,True
+3,E-W left turns,E,left,3,0.0,0,False,True,,3.7167,False
+3,E-W left turns,E,left,3,0.5,0,False,True,,3.7167,True
+3,E-W left turns,E,left,3,0.0,2,False,True,,3.7167,True
+3,E-W left turns,W,left,3,0.0,0,False,True,,3.7167,False
+3,E-W left turns,W,left,3,0.5,0,False,True,,3.7167,False
+3,E-W left turns,W,left,3,0.0,2,False,False,,,True
