@@ -10,3 +10,6 @@ Directory: traffic_sim_Motor_Knights >> trial1_traffic_sim >>
 trial1_traffic_sim files: dqn_phase.pt , play_dqn_traffic_sim_2_smart , Read Me , rl_env_traffic_sim_2_smart , traffic_sim_2_smart , train_dqn_traffic_sim_2_smart
 
 
+Contributors:
+1. Ahmer Jamil
+2. Mustafa Mohammad Shaky
